@@ -14,8 +14,8 @@ function render() {
 
     div.innerHTML = `
       <h3>${b.name}</h3>
-      <a href="${b.url}" target="_blank">Open</a>
-      <div class="delete" onclick="removeBookmark(${i})">Delete</div>
+      <a href="${b.url}" target="_blank">ENTER</a>
+      <div class="delete" onclick="removeBookmark(${i})">PURGE</div>
     `;
 
     container.appendChild(div);
