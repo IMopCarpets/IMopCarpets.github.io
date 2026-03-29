@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>G's Hub</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>G // Control</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <div class="overlay"></div>
+<div class="bg"></div>
+<div class="particles"></div>
 
-  <header>
-    <h1>G's Hub</h1>
-    <p class="subtitle">Dive to the Heart</p>
-  </header>
+<header>
+  <h1>G // CONTROL</h1>
+  <p>Awaken your data</p>
+</header>
 
-  <section class="add-bookmark">
+<div class="panel">
+
+  <div class="inputs">
     <input id="name" placeholder="Name">
-    <input id="url" placeholder="https://example.com">
-    <button onclick="addBookmark()">Add</button>
-  </section>
+    <input id="url" placeholder="https://">
+    <button onclick="addBookmark()">+</button>
+  </div>
 
-  <section id="bookmarks"></section>
+  <div id="bookmarks"></div>
 
-  <script src="app.js"></script>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
