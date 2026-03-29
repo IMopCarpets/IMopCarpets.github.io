@@ -1,76 +1,146 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at center, #0a0a0f, #000);
+  background: black;
   color: white;
-  text-align: center;
+  overflow-x: hidden;
 }
 
-.overlay {
+/* BACKGROUND */
+.bg {
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, #0a0f2a, black);
+  animation: moveBg 20s infinite alternate;
+  z-index: -2;
+}
+
+@keyframes moveBg {
+  from { transform: translate(0,0); }
+  to { transform: translate(-10%, -10%); }
+}
+
+/* PARTICLES */
+.particles::before {
+  content: "";
   position: fixed;
   width: 100%;
   height: 100%;
-  background: url('https://i.imgur.com/8Qf6R5M.png') repeat;
-  opacity: 0.05;
-  pointer-events: none;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.08;
+  animation: drift 60s linear infinite;
+  z-index: -1;
 }
 
+@keyframes drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
+}
+
+/* HEADER */
 header {
-  padding: 40px 20px;
+  text-align: center;
+  padding: 40px;
 }
 
 h1 {
   font-size: 3rem;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
+  text-shadow: 0 0 20px #4da6ff;
 }
 
-.subtitle {
-  opacity: 0.6;
+header p {
+  opacity: 0.5;
 }
 
-.add-bookmark {
-  margin: 20px;
+/* PANEL */
+.panel {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(20,20,40,0.6);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(0,0,0,0.8);
+}
+
+/* INPUTS */
+.inputs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 input {
   padding: 10px;
   margin: 5px;
+  border-radius: 8px;
   border: none;
-  border-radius: 5px;
+  background: rgba(255,255,255,0.05);
+  color: white;
 }
 
 button {
   padding: 10px 15px;
-  background: #222;
-  color: white;
-  border: 1px solid #555;
+  background: #111;
+  border: 1px solid #4da6ff;
+  color: #4da6ff;
   cursor: pointer;
+  transition: 0.3s;
 }
 
+button:hover {
+  background: #4da6ff;
+  color: black;
+  box-shadow: 0 0 15px #4da6ff;
+}
+
+/* BOOKMARK GRID */
 #bookmarks {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
 }
 
+/* CARD */
 .card {
-  background: rgba(20,20,30,0.8);
-  border: 1px solid #333;
-  margin: 10px;
-  padding: 15px;
-  width: 200px;
-  border-radius: 10px;
-  transition: 0.2s;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(10,10,20,0.8);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, #4da6ff, transparent);
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.card:hover::before {
+  opacity: 0.2;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  border-color: #888;
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 0 20px #4da6ff;
 }
 
 a {
   color: #9ecfff;
   text-decoration: none;
+  display: block;
+  margin-top: 10px;
 }
 
 .delete {
